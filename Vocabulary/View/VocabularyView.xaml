@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Vocabulary.View.VocabularyView"
+    xmlns:local="clr-namespace:Vocabulary.ViewModels">
+    
+    <ContentPage.BindingContext>
+        <local:VocabularyViewModel/>
+    </ContentPage.BindingContext>
+
+                  <ContentPage.Background>
+                      <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,1">
+                      <GradientStop Color="DarkGray"
+                          Offset="0.2" />
+                      <GradientStop Color="#494085"
+                          Offset="0.9" />
+                      </LinearGradientBrush>
+                  </ContentPage.Background>
+
+     <StackLayout>
+         <ListView ItemsSource="{Binding ListWords}" SeparatorVisibility="None"  HasUnevenRows="True" Margin="0,50,0,0">
+
+                  <ListView.Background>
+                      <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,1">
+                      <GradientStop Color="DarkGray"
+                          Offset="0.2" />
+                      <GradientStop Color="#494085"
+                          Offset="0.9" />
+                      </LinearGradientBrush>
+                  </ListView.Background>
+
+             <ListView.ItemTemplate>
+
+                 <DataTemplate>
+
+                     <ViewCell>
+                         <ViewCell.View>
+
+                             <Grid>
+                                 <Grid.ColumnDefinitions>
+                                     <ColumnDefinition Width="*"/>
+                                     <ColumnDefinition Width="*"/>
+                                     <ColumnDefinition Width="*"/>
+                                     <ColumnDefinition Width="*"/>
+                                 </Grid.ColumnDefinitions>
+                                 <Label Text="{Binding Id}" HorizontalOptions="Start" Margin="30,10,0,0" TextColor="Black" Grid.Column="0"/>
+                                <Frame x:Name="Ukranian" CornerRadius="15" Padding="5,5,5,5" HasShadow="True" Margin="20,0,20,0" Grid.ColumnSpan="3" Grid.Column="1">
+                                      <Label HorizontalTextAlignment="Center" FontSize="Medium" TextColor="Black">
+                                          <Label.FormattedText>
+                                              <FormattedString>
+                                                  <Span Text="{Binding EnglishWords, StringFormat='{0} - '}" />
+                                                  <Span Text="{Binding UkranianWords }"/>  
+                                              </FormattedString>
+                                          </Label.FormattedText>
+                                      </Label>
+                                 </Frame>
+                                 
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </StackLayout>
+</ContentPage>

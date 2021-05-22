@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Vocabulary.AppShell"
+    xmlns:views="clr-namespace:Vocabulary.View "
+    xmlns:vm="clr-namespace:Vocabulary.ViewModels"
+    Shell.NavBarIsVisible="False">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.TabBarBackgroundColor"
+                        Value="CornflowerBlue" />
+                <Setter Property="Shell.TabBarTitleColor"
+                        Value="Black" />
+                <Setter Property="Shell.TabBarUnselectedColor"
+                        Value="AntiqueWhite" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+    
+   <TabBar>
+       <Tab Title="Vocabulary" Icon="icon_feed.png"> 
+           <ShellContent ContentTemplate="{DataTemplate views:VocabularyView}"/>
+       </Tab>
+       <Tab Title="Add Words">
+           <ShellContent ContentTemplate="{DataTemplate views:AddWordsView}"/>
+       </Tab>
+
+   </TabBar> 
+</Shell>

@@ -16,7 +16,18 @@
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppData\" />
+    <Folder Include="Model\" />
     <Folder Include="Interface\" />
+    <Folder Include="View\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AppShell.xaml.cs">
+      <DependentUpon>AppShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\VocabularyView.xaml.cs">
+      <DependentUpon>VocabularyView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

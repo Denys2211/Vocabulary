@@ -133,4 +133,7 @@
       <Name>Vocabulary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\icon_feed.png" />
+  </ItemGroup>
 </Project>

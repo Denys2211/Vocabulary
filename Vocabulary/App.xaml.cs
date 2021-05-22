@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace Vocabulary
 {
@@ -10,7 +8,7 @@ namespace Vocabulary
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()
