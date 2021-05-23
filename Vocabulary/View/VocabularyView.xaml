@@ -9,61 +9,137 @@
         <local:VocabularyViewModel/>
     </ContentPage.BindingContext>
 
-                  <ContentPage.Background>
-                      <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="1,1">
-                      <GradientStop Color="DarkGray"
-                          Offset="0.2" />
-                      <GradientStop Color="#494085"
-                          Offset="0.9" />
-                      </LinearGradientBrush>
-                  </ContentPage.Background>
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                EndPoint="1,1">
+        <GradientStop Color="DarkGray"
+            Offset="0.2" />
+        <GradientStop Color="#494085"
+            Offset="0.9" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
-     <StackLayout>
-         <ListView ItemsSource="{Binding ListWords}" SeparatorVisibility="None"  HasUnevenRows="True" Margin="0,50,0,0">
+    <StackLayout>
+        <ListView ItemsSource="{Binding ListWords}"
+                   SeparatorVisibility="None"
+                   HasUnevenRows="True"
+                   Margin="0,50,0,0">
 
-                  <ListView.Background>
-                      <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="1,1">
-                      <GradientStop Color="DarkGray"
-                          Offset="0.2" />
-                      <GradientStop Color="#494085"
-                          Offset="0.9" />
-                      </LinearGradientBrush>
-                  </ListView.Background>
+            <ListView.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                                      EndPoint="1,1">
+                    <GradientStop Color="DarkGray"
+                                   Offset="0.2" />
+                    <GradientStop Color="#494085"
+                                   Offset="0.9" />
+                </LinearGradientBrush>
+            </ListView.Background>
 
-             <ListView.ItemTemplate>
+            <ListView.ItemTemplate>
 
-                 <DataTemplate>
+                <DataTemplate>
 
-                     <ViewCell>
-                         <ViewCell.View>
+                    <ViewCell>
+                        <ViewCell.View>
 
-                             <Grid>
-                                 <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="*"/>
-                                     <ColumnDefinition Width="*"/>
-                                     <ColumnDefinition Width="*"/>
-                                     <ColumnDefinition Width="*"/>
-                                 </Grid.ColumnDefinitions>
-                                 <Label Text="{Binding Id}" HorizontalOptions="Start" Margin="30,10,0,0" TextColor="Black" Grid.Column="0"/>
-                                <Frame x:Name="Ukranian" CornerRadius="15" Padding="5,5,5,5" HasShadow="True" Margin="20,0,20,0" Grid.ColumnSpan="3" Grid.Column="1">
-                                      <Label HorizontalTextAlignment="Center" FontSize="Medium" TextColor="Black">
-                                          <Label.FormattedText>
-                                              <FormattedString>
-                                                  <Span Text="{Binding EnglishWords, StringFormat='{0} - '}" />
-                                                  <Span Text="{Binding UkranianWords }"/>  
-                                              </FormattedString>
-                                          </Label.FormattedText>
-                                      </Label>
-                                 </Frame>
-                                 
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="20"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Frame CornerRadius="15"
+                                       Padding="5,5,5,5"
+                                       HasShadow="True"
+                                       Margin="20,0,20,0"
+                                       Grid.ColumnSpan="5"
+                                       Grid.Column="0">
+                                    <Label Text="{Binding EnglishWords}"
+                                           HorizontalTextAlignment="Center"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Padding="-2">
+                                          
+                                    </Label>
+                                     
+                                </Frame>
+                                <Frame CornerRadius="15"
+                                       Padding="5,5,5,5"
+                                       HasShadow="True"
+                                       Margin="20,0,20,0"
+                                       Grid.ColumnSpan="5"
+                                       Grid.Column="4">
+                                    <Label Text="{Binding UkrainianWords}"
+                                           HorizontalTextAlignment="Center"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Padding="-2">
+                                          
+                                    </Label>
+                                    <Frame.Background>
+                                        <LinearGradientBrush StartPoint="0,0"
+                                                             EndPoint="1,1">
+                                            <GradientStop Color="WhiteSmoke"
+                                                          Offset="0.2" />
+                                            <GradientStop Color="Yellow"
+                                                          Offset="0.9" />
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
+                                </Frame>
+                                <Label Text="{Binding DateTime}"
+                                       FontSize="Small"
+                                       Grid.Row="1"
+                                       Grid.Column="3"
+                                       Grid.ColumnSpan="6"
+                                       Margin="80,0,0,0"/>
+                                <Label Text="{Binding Id}"
+                                       HorizontalOptions="Start"
+                                       Margin="30,0,0,0"
+                                       TextColor="Black"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="3"
+                                       Grid.Row="1"
+                                       FontSize="Small"
+                                       />
+                                <Button Text="X"
+                                        Margin="-10,0,10,0"
+                                        Padding="-5"
+                                        TextTransform="None"
+                                        TextColor="Red"
+                                        BackgroundColor="SeaShell"
+                                        CornerRadius="15"
+                                        Grid.Column="9"
+                                                       >
+
+                                </Button>
                             </Grid>
+
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
 
         </ListView>
+        <Grid>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+        </Grid>
     </StackLayout>
 </ContentPage>

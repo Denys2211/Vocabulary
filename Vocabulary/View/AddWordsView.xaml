@@ -2,8 +2,24 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Vocabulary.View.AddWordsView">
+    x:Class="Vocabulary.View.AddWordsView"
+    Title="New Item"
+    Shell.PresentationMode="Modal"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true">
+    
 
-
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="English" FontSize="Medium" />
+            <Entry Text="{Binding English, Mode=TwoWay}" FontSize="Medium" HorizontalTextAlignment="Center"/>
+            <Label Text="Ukrainian" FontSize="Medium" />
+            <Entry Text="{Binding Ukrainian, Mode=TwoWay}" FontSize="Medium"  HorizontalTextAlignment="Center"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>
