@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Vocabulary.ViewModels;
+using Xamarin.Forms;
 
 namespace Vocabulary
 {

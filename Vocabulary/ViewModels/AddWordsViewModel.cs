@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Vocabulary.Model;
+using Vocabulary.View;
 using Xamarin.Forms;
 
 namespace Vocabulary.ViewModels
@@ -38,9 +41,12 @@ namespace Vocabulary.ViewModels
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
-        private async void OnCancel()
+        private void OnCancel()
         {
-            await Shell.Current.GoToAsync("..");
+            English = null;
+            Ukrainian = null;
+            OnPropertyChanged("English");
+            OnPropertyChanged("Ukrainian");
         }
 
         private async void OnSave()
@@ -52,7 +58,8 @@ namespace Vocabulary.ViewModels
             OnPropertyChanged("English");
             OnPropertyChanged("Ukrainian");
 
-            await Shell.Current.GoToAsync("..");
+            await (App.Current.MainPage as Shell).GoToAsync("//tabbar/tab/vocabulary", true);
+
         }
     }
 }

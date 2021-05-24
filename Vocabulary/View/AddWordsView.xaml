@@ -11,10 +11,10 @@
 
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
-            <Label Text="English" FontSize="Medium" />
-            <Entry Text="{Binding English, Mode=TwoWay}" FontSize="Medium" HorizontalTextAlignment="Center"/>
-            <Label Text="Ukrainian" FontSize="Medium" />
-            <Entry Text="{Binding Ukrainian, Mode=TwoWay}" FontSize="Medium"  HorizontalTextAlignment="Center"/>
+            <Label Text="English" FontSize="Medium" TextColor="Black" />
+            <Entry Text="{Binding English, Mode=TwoWay}" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center"/>
+            <Label Text="Ukrainian" FontSize="Medium" TextColor="Black"/>
+            <Entry Text="{Binding Ukrainian, Mode=TwoWay}" TextColor="Black"  FontSize="Medium"  HorizontalTextAlignment="Center"/>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>

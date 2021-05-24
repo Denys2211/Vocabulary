@@ -135,5 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon_feed.png" />
+    <BundleResource Include="Resources\table_glagol.png" />
+    <BundleResource Include="Resources\To_Be.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Zaimennyc.jpeg" />
   </ItemGroup>
 </Project>

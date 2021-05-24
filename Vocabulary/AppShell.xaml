@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Vocabulary.AppShell"
     xmlns:views="clr-namespace:Vocabulary.View "
-    xmlns:vm="clr-namespace:Vocabulary.ViewModels"
     Shell.NavBarIsVisible="False">
 
     <Shell.Resources>
@@ -20,13 +19,16 @@
         </ResourceDictionary>
     </Shell.Resources>
     
-   <TabBar>
-       <Tab Title="Vocabulary" Icon="icon_feed.png"> 
-           <ShellContent ContentTemplate="{DataTemplate views:VocabularyView}"/>
+   <TabBar Route="tabbar">
+       <Tab Title="Vocabulary" Icon="icon_feed.png" Route="tab"> 
+           <ShellContent Route="vocabulary" ContentTemplate="{DataTemplate views:VocabularyView}"/>
+       </Tab>
+       <Tab Title="Grammar" >
+           <ShellContent ContentTemplate="{DataTemplate views:GrammarView}"/>
+
        </Tab>
        <Tab Title="Add Words">
            <ShellContent ContentTemplate="{DataTemplate views:AddWordsView}"/>
        </Tab>
-
    </TabBar> 
 </Shell>

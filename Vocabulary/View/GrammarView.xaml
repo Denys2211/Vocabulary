@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Vocabulary.View.GrammarView">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                EndPoint="1,1">
+        <GradientStop Color="DarkGray"
+            Offset="0.2" />
+        <GradientStop Color="WhiteSmoke"
+            Offset="0.9" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ScrollView>
+    <StackLayout>
+       
+        <Label Text="Pronouns" VerticalOptions="Center" HorizontalOptions="Center" FontSize="44" TextColor="Black"/>
+        <Image Source="Zaimennyc.jpeg"   VerticalOptions="Center" Scale="1"/>
+        <Label Text="Verb" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="44" TextColor="Black"/>
+        <Image Source="table_glagol"   VerticalOptions="Center" Scale="1"/>
+        <Label Text="To Be" VerticalOptions="Center" HorizontalOptions="Center" FontSize="44" TextColor="Black"/>    
+        <Image Source="To_Be"   VerticalOptions="Center" Scale="1"/>
+
+
+    </StackLayout>
+        </ScrollView>
+</ContentPage>
