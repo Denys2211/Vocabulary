@@ -6,10 +6,10 @@ namespace Vocabulary.Interface
     public interface IDataRepository
     {
 
-        void AddInDataBase(string name, params string[] inpu);
+        void AddInDataBase(string name, params string[] input);
 
         IEnumerable<Words> ReadDataBase();
 
-        void DeleteDataTable(string name);
+        void DeleteDataTable(string name, params string[] input);
     }
 }
