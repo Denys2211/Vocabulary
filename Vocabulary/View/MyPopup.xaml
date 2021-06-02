@@ -10,7 +10,7 @@
         <animations:ScaleAnimation 
             PositionIn="Right"
             PositionOut="Right"
-            ScaleIn="1.2"
+            ScaleIn="0.2"
             ScaleOut="0.8"
             DurationIn="400"
             DurationOut="300"
