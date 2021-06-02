@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Vocabulary.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Vocabulary.View
 {
@@ -10,7 +7,6 @@ namespace Vocabulary.View
         public VocabularyView()
         {
             InitializeComponent();
-
         }
     }
 }

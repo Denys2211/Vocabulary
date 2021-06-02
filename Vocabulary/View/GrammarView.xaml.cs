@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Vocabulary.ViewModels;
+
 using Xamarin.Forms;
 
 namespace Vocabulary.View
@@ -10,8 +10,6 @@ namespace Vocabulary.View
         public GrammarView()
         {
             InitializeComponent();
-
-            BindingContext = new GrammarViewModel();
         }
     }
 }

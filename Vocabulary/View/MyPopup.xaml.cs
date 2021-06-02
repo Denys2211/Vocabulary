@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Vocabulary.ViewModels;
+using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 
 namespace Vocabulary.View
 {
-    public partial class AddWordsView : ContentPage
+    public partial class MyPopup : PopupPage
     {
-        public AddWordsView()
+        public MyPopup()
         {
             InitializeComponent();
-
-            BindingContext = new AddWordsViewModel();
         }
     }
 }

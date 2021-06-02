@@ -14,6 +14,8 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -25,9 +27,6 @@
   <ItemGroup>
     <Compile Update="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="View\VocabularyView.xaml.cs">
-      <DependentUpon>VocabularyView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
