@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using Vocabulary.Interface;
 using Vocabulary.Model;
-using Xamarin.Forms;
 
 namespace Vocabulary.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
         public static WordsRepository CurrentWordsRepository { get; protected set; }
-        public static Func<bool> DisplayMessage;
         bool isBusy = false;
         public bool IsBusy
         {

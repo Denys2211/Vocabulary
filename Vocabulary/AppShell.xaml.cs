@@ -13,6 +13,7 @@ namespace Vocabulary
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(VocabularyView), typeof(VocabularyView));
+
         }
         
     }

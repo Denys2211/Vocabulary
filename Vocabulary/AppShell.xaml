@@ -27,8 +27,7 @@
            <ShellContent ContentTemplate="{DataTemplate views:GrammarView}"/>
 
        </Tab>
-       <Tab Title="Add Words">
-           <ShellContent ContentTemplate="{DataTemplate views:AddWordsView}"/>
+       <Tab Title="Text">
        </Tab>
    </TabBar> 
 </Shell>

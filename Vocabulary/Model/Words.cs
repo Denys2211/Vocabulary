@@ -13,10 +13,5 @@ namespace Vocabulary.Model
         public string EnglishWords { get; set; }
         public string UkrainianWords { get; set; }
         public string DateTime { get; set; }
-
-        public static implicit operator string(Words v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

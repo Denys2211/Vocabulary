@@ -42,15 +42,22 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <SearchBar Grid.ColumnSpan="10">
+            <SearchBar Grid.ColumnSpan="8" Grid.Column="2">
 
             </SearchBar>
             <Button Text="Sort"
-                    Grid.Column="10"
                     Grid.ColumnSpan="2"
                     BackgroundColor="DimGray"
                     TextColor="WhiteSmoke"
                     Command="{Binding MenuSort}">
+
+            </Button>
+            <Button Text="Add"
+                    Grid.Column="10"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="DimGray"
+                    TextColor="WhiteSmoke"
+                    Command="{Binding AddWords}">
 
             </Button>
             <Frame Padding="0,0,0,0"

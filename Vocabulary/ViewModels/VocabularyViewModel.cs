@@ -19,6 +19,8 @@ namespace Vocabulary.ViewModels
 
         public Command MenuSort { get; }
 
+        public Command AddWords { get; }
+
         public Command<Words> ItemTapped { get; }
 
         public int CountWords { get; private set; }
@@ -37,15 +39,22 @@ namespace Vocabulary.ViewModels
 
             MenuSort = new Command(OnItemSort);
 
+            AddWords = new Command(OnAddWords);
+
             CountWords = ListWords.Count;
 
             LastWordAdd = ListWords[0].DateTime;
 
 
         }
+
+        async void OnAddWords()
+        {
+            await PopupNavigation.Instance.PushAsync(new PopupAddWordsView());
+        }
         async void OnItemSort()
         {
-           await PopupNavigation.Instance.PushAsync(new MyPopup());
+           await PopupNavigation.Instance.PushAsync(new PopupMenuItemView());
         }
         void ExecuteLoadItemsCommand()
         {

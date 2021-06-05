@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    x:Class="Vocabulary.View.PopupAddWordsView"
+    CloseWhenBackgroundIsClicked="True"
+    xmlns:local="clr-namespace:Vocabulary.ViewModels">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Top"
+            PositionOut="Center"
+            ScaleIn="0.2"
+            ScaleOut="0.8"
+            DurationIn="300"
+            DurationOut="400"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="False"/>
+    </pages:PopupPage.Animation>
+
+    <pages:PopupPage.BindingContext>
+        <local:PopupAddWordsViewModel/>
+    </pages:PopupPage.BindingContext>
+    <StackLayout Padding="0,50,0,0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Entry Text="{Binding English, Mode=TwoWay}" TextColor="Black"
+                   FontSize="Medium"
+                   Grid.ColumnSpan="2"
+                   Placeholder="English"
+                   FontAttributes="Bold"
+                   ClearButtonVisibility="WhileEditing"
+                   BackgroundColor="WhiteSmoke"
+                   PlaceholderColor="DimGray"
+                   HorizontalTextAlignment="Center"/>
+            <Entry Text="{Binding Ukrainian, Mode=TwoWay}" TextColor="Black"
+                   Placeholder="Ukrainian"
+                   Grid.ColumnSpan="2"
+                   Grid.Column="2"
+                   FontAttributes="Bold"
+                   BackgroundColor="WhiteSmoke"
+                   PlaceholderColor="DimGray"
+                   FontSize="Medium"
+                   ClearButtonVisibility="WhileEditing"
+                   HorizontalTextAlignment="Center">
+            </Entry>
+            <Button Text="Cancel"
+                    Command="{Binding CancelCommand}"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="White"
+                    BackgroundColor="PaleVioletRed"
+                    Grid.Row="1"
+                    Grid.Column="1"/>
+
+            <Button Text="Save"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    TextColor="White"
+                    BackgroundColor="Gray"
+                    Command="{Binding SaveCommand}"
+                    HorizontalOptions="FillAndExpand"/>
+
+        </Grid>
+    </StackLayout>
+</pages:PopupPage>

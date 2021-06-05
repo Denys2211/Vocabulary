@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using Vocabulary.Model;
+using Rg.Plugins.Popup.Services;
 using Vocabulary.View;
 using Xamarin.Forms;
 
 namespace Vocabulary.ViewModels
 {
-    public class AddWordsViewModel : BaseViewModel
+    public class PopupAddWordsViewModel : BaseViewModel
     {
         private string english;
         private string ukrainian;
 
-        public AddWordsViewModel()
+        public PopupAddWordsViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
@@ -42,24 +39,16 @@ namespace Vocabulary.ViewModels
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
-        private void OnCancel()
+        private async void OnCancel()
         {
-            English = null;
-            Ukrainian = null;
-            OnPropertyChanged("English");
-            OnPropertyChanged("Ukrainian");
+            await PopupNavigation.Instance.PopAsync(true);
         }
 
         private async void OnSave()
         {
 
             CurrentWordsRepository.AddInDataBase("Words", English, Ukrainian);
-            English = null;
-            Ukrainian = null;
-            OnPropertyChanged("English");
-            OnPropertyChanged("Ukrainian");
-
-            await (App.Current.MainPage as Shell).GoToAsync("//tabbar/tab/vocabulary", true);
+            await PopupNavigation.Instance.PopAsync(true);
 
         }
     }
