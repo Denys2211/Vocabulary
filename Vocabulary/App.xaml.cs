@@ -9,7 +9,7 @@ namespace Vocabulary
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<WordsRepository>();
 
             MainPage = new AppShell();
         }

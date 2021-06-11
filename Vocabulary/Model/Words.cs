@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using SQLite;
+﻿using SQLite;
 
 namespace Vocabulary.Model
 {

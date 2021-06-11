@@ -10,7 +10,7 @@ namespace Vocabulary.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Words> DataStore => DependencyService.Get<IDataStore<Words>>();
+        public IDataRepository<Words> DataStore => DependencyService.Get<IDataRepository<Words>>();
         bool isBusy = false;
         public bool IsBusy
         {

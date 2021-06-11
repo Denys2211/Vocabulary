@@ -2,10 +2,12 @@
 using SQLite;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using Vocabulary.Model;
 
-namespace Vocabulary.Model
+namespace Vocabulary.Services
 {
-    public class WordsRepository : IDataRepository
+    public class WordsRepository : IDataRepository<Words>
     {
 
         private readonly SQLiteConnection connection;
@@ -18,16 +20,16 @@ namespace Vocabulary.Model
             connection.CreateTable<Words>();
         }
 
-        static readonly object locker = new object();
-
-        public void AddInDataBase(string name, params string[] input)
+        public async Task<bool> AddInDataBase(string name, params string[] input)
         {
             try
             {
 
                 if (name == "Words")
-
+                {
                     connection.Execute($"INSERT INTO {name}(EnglishWords, UkrainianWords, DateTime) VALUES ('{input[0]}','{input[1]}','{DateTime.Now}')");
+                    return await Task.FromResult(true);
+                }                   
                 else
 
                     throw new Exception("Database Add error");
@@ -40,7 +42,7 @@ namespace Vocabulary.Model
 
         }
 
-        public IEnumerable<Words> ReadDataBase()
+        public async Task<IEnumerable<Words>> ReadDataBase(bool forceRefresh = false)
 
         {
             try
@@ -49,23 +51,21 @@ namespace Vocabulary.Model
 
                 if(resourcesTable.Count != 0)
                 {
-                    lock (locker)
-                    {
-                        return resourcesTable;
-                    }
+                    return await Task.FromResult(resourcesTable);
                 }
                 else
                 {
-                    lock (locker)
+                    resourcesTable = new List<Words>
                     {
-                        return new List<Words> {
-                            new Words {
-                                UkrainianWords = "No Data",
-                                EnglishWords ="No Data",
-                                DateTime =DateTime.Now.ToString()
-                            }
-                        };
-                    }
+                        new Words
+                        {
+                            UkrainianWords = "No Data",
+                            EnglishWords ="No Data",
+                            DateTime =DateTime.Now.ToString()
+                        }
+                    };
+                    return await Task.FromResult(resourcesTable);
+
 
                 }
             }
@@ -76,20 +76,19 @@ namespace Vocabulary.Model
 
 
         }
-        public void DeleteDataTable(string name, params string[] input )
+        public async Task<bool> DeleteDataTable(string name, params string[] input )
         {
             try
             {
                 connection.Execute($"DELETE FROM {name} WHERE _Id = {input[0]}");
                 connection.Execute($"UPDATE SQLITE_SEQUENCE SET SEQ = 0 WHERE NAME = '{name}'");
-
+                return await Task.FromResult(true);
             }
             catch
             {
                 throw new Exception("Database clean error");
             }
         }
-
         
     }
 }
