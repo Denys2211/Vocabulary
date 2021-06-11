@@ -19,10 +19,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Interface\" />
     <Folder Include="View\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Images\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="AppShell.xaml.cs">

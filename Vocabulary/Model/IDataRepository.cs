@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Vocabulary.Model;
 
-namespace Vocabulary.Interface
+namespace Vocabulary.Model
 {
     public interface IDataRepository
     {

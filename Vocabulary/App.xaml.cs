@@ -1,4 +1,4 @@
-﻿using Vocabulary.ViewModels;
+﻿using Vocabulary.Services;
 using Xamarin.Forms;
 
 namespace Vocabulary
@@ -8,6 +8,8 @@ namespace Vocabulary
         public App()
         {
             InitializeComponent();
+
+            DependencyService.Register<MockDataStore>();
 
             MainPage = new AppShell();
         }

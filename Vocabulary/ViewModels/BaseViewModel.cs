@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Vocabulary.Model;
+using Vocabulary.Services;
+using Xamarin.Forms;
 
 namespace Vocabulary.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public static WordsRepository CurrentWordsRepository { get; protected set; }
+        public IDataStore<Words> DataStore => DependencyService.Get<IDataStore<Words>>();
         bool isBusy = false;
         public bool IsBusy
         {

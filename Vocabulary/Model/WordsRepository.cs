@@ -1,7 +1,6 @@
 ﻿using System;
 using SQLite;
 using System.Collections.Generic;
-using Vocabulary.Interface;
 using System.IO;
 
 namespace Vocabulary.Model

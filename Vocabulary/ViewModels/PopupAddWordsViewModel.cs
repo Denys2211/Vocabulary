@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq;
 using Rg.Plugins.Popup.Services;
-using Vocabulary.View;
 using Xamarin.Forms;
 
 namespace Vocabulary.ViewModels
@@ -46,8 +46,19 @@ namespace Vocabulary.ViewModels
 
         private async void OnSave()
         {
+            var items = DataStore.CurrentWordsRepository.ReadDataBase();
+            foreach (var item in items)
+            {
+                if (item.EnglishWords == English)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Notification", "Word is Exist", "Ok");
+                    return;
+                }
+            }
+            DataStore.CurrentWordsRepository.AddInDataBase("Words", English, Ukrainian);
+            items = DataStore.CurrentWordsRepository.ReadDataBase().Reverse().ToList();
+            await DataStore.AddItemAsync(items[0]);
 
-            CurrentWordsRepository.AddInDataBase("Words", English, Ukrainian);
             await PopupNavigation.Instance.PopAsync(true);
 
         }

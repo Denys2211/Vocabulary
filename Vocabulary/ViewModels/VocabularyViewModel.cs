@@ -1,9 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using Vocabulary.Model;
+﻿using Vocabulary.Model;
 using Vocabulary.View;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Vocabulary.ViewModels
 {
@@ -11,7 +11,7 @@ namespace Vocabulary.ViewModels
     {
         private Words _selectedItem;
 
-        public ObservableCollection<Words> ListWords { get; set; }
+        public ObservableCollection<Words> ListWords { get;}
 
         public string LastWordAdd { get; private set; }
 
@@ -28,12 +28,9 @@ namespace Vocabulary.ViewModels
 
         public VocabularyViewModel()
         {
+            ListWords = DataStore.Items;
 
-            CurrentWordsRepository = new WordsRepository();
-
-            ListWords = new ObservableCollection<Words>(CurrentWordsRepository.ReadDataBase().Reverse());
-
-            LoadItemsCommand = new Command(() => ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommandAsync());
 
             ItemTapped = new Command<Words>(OnItemSelected);
 
@@ -41,9 +38,9 @@ namespace Vocabulary.ViewModels
 
             AddWords = new Command(OnAddWords);
 
-            CountWords = ListWords.Count;
+            CountWords = DataStore.Items.Count;
 
-            LastWordAdd = ListWords[0].DateTime;
+            LastWordAdd = DataStore.Items[0].DateTime;
 
 
         }
@@ -56,21 +53,21 @@ namespace Vocabulary.ViewModels
         {
            await PopupNavigation.Instance.PushAsync(new PopupMenuItemView());
         }
-        void ExecuteLoadItemsCommand()
+        public async Task ExecuteLoadItemsCommandAsync()
         {
             IsBusy = true;
 
             try
             {
                 ListWords.Clear();
-                var items = CurrentWordsRepository.ReadDataBase().Reverse();
+                var items = await DataStore.GetItemsAsync(true);
                 foreach (var item in items)
                 {
                     ListWords.Add(item);
                 }
-                LastWordAdd = ListWords[0].DateTime;
+                LastWordAdd = DataStore.Items[0].DateTime;
 
-                CountWords = ListWords.Count;
+                CountWords = DataStore.Items.Count;
 
                 OnPropertyChanged("LastWordAdd");
 
@@ -109,8 +106,8 @@ namespace Vocabulary.ViewModels
 
             if (result)
             {
-                CurrentWordsRepository.DeleteDataTable("Words", item.Id.ToString());
-                ExecuteLoadItemsCommand();
+                DataStore.CurrentWordsRepository.DeleteDataTable("Words", item.Id.ToString());
+                await ExecuteLoadItemsCommandAsync();
             }
         }
     }

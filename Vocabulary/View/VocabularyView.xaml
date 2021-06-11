@@ -61,7 +61,6 @@
 
             </Button>
             <Frame Padding="0,0,0,0"
-                   Margin="0,0,0,0"
                    Grid.Row="1"
                    Grid.ColumnSpan="4">
                 <Frame.Background>
@@ -104,7 +103,7 @@
             </Label>
         </Frame>
         </Grid>
-    <RefreshView  Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         
         <CollectionView ItemsSource="{Binding ListWords}"
                    Margin="0,0,0,0">
@@ -124,7 +123,7 @@
                     <StackLayout>
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="*"/>
                                     <RowDefinition Height="20"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
