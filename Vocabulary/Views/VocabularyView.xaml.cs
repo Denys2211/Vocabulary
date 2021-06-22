@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace Vocabulary.View
+namespace Vocabulary.Views
 {
     public partial class VocabularyView : ContentPage
     {

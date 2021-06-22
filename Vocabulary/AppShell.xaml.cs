@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Vocabulary.View;
+using Vocabulary.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

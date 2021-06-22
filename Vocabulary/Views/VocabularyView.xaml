@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Vocabulary.Views.VocabularyView"
+    xmlns:eventToCommand="clr-namespace:Vocabulary.Behavior;assembly=Vocabulary"
+    xmlns:local="clr-namespace:Vocabulary.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:VocabularyViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,1">
+        <GradientStop Color="DarkGray"
+                      Offset="0.2" />
+        <GradientStop Color="#494085"
+                      Offset="0.9" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <StackLayout Margin="0,0,0,0">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness" iOS="0,35,0,0"/>
+            </StackLayout.Margin>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            
+                <SearchBar Grid.ColumnSpan="8"
+                           Grid.Column="2"
+                           Placeholder="Searche"
+                           Text="{Binding TextSearch}">
+                    <SearchBar.Behaviors>
+                        <eventToCommand:EventToCommandBehavior
+                            EventName="TextChanged"
+                            Command="{Binding SearchData}"/>
+                        <eventToCommand:EventToCommandBehavior
+                            EventName="SearchButtonPressed"
+                            Command="{Binding SearchBtnPress}"/>
+                    </SearchBar.Behaviors>
+                </SearchBar>
+
+                <Button Text="Sort"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="DimGray"
+                        TextColor="WhiteSmoke"
+                        Command="{Binding MenuSort}">
+                </Button>
+
+                <Button Text="Add"
+                        Grid.Column="10"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="DimGray"
+                        TextColor="WhiteSmoke"
+                        Command="{Binding AddWords}">
+
+                </Button>
+
+                <Frame Padding="0,0,0,0"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="4">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0"
+                                             EndPoint="1,1">
+                            <GradientStop Color="Wheat"
+                                          Offset="0.2" />
+                            <GradientStop Color="DarkGray"
+                                          Offset="0.9" />
+                        </LinearGradientBrush>
+                     </Frame.Background>
+                    <Label Padding="20,0,0,0"
+                           Text="{Binding CountWords, StringFormat='Count - {0}'}"
+                           TextColor="Black">
+                        <Label.FontSize>
+                            <OnPlatform x:TypeArguments="x:Double" iOS="14"/>
+                        </Label.FontSize>
+                    </Label>
+                </Frame>
+
+                <Frame Padding="0,0,0,0"
+                       Margin="0,0,0,0"
+                       Grid.Row="1"
+                       Grid.Column="6"
+                       Grid.ColumnSpan="6">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="Wheat"
+                                      Offset="0.2" />
+                        <GradientStop Color="DarkGray"
+                                      Offset="0.9" />
+                    </LinearGradientBrush>
+                 </Frame.Background>
+
+                <Label Padding="20,0,0,0"
+                       Text="{Binding LastWordAdd}"
+                       TextColor="Black">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double" iOS="14"/>
+                    </Label.FontSize>
+                </Label>
+
+            </Frame>
+
+            </Grid>
+                <Label Text="No data found!"
+                       HorizontalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="Gray"
+                       IsVisible="{Binding IsVisibleStatus}"
+                       Margin="10"
+                       x:Name="status"
+                       Grid.RowSpan="2"
+                       Grid.ColumnSpan="12"/>
+            <RefreshView Command="{Binding LoadItemsCommand}"
+                         IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <StackLayout>
+                    <ScrollView>
+                        <ListView ItemsSource="{Binding ListWords}"
+                                    SeparatorVisibility="None"
+                                    HasUnevenRows="True"
+                                    Margin="0,0,0,0">
+                            <ListView.Background>
+                                <LinearGradientBrush StartPoint="0,0"
+                                                        EndPoint="1,1">
+                                    <GradientStop Color="DarkGray"
+                                                    Offset="0.2" />
+                                    <GradientStop Color="#494085"
+                                                    Offset="0.9" />
+                                </LinearGradientBrush>
+                            </ListView.Background>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                
+                                            <Frame CornerRadius="15"
+                                                    Padding="5,5,5,5"
+                                                    HasShadow="True"
+                                                    Margin="20,0,20,-5"
+                                                    Grid.ColumnSpan="6"
+                                                    Grid.Column="0">
+                                                <Label Text="{Binding EnglishWords}"
+                                                        HorizontalTextAlignment="Center"
+                                                        FontSize="Medium"
+                                                        Margin="0"
+                                                        FontAttributes="Bold"
+                                                        TextColor="Black"
+                                                        Padding="0,-3,0,0">
+                                                </Label>
+                                            </Frame>
+
+                                            <Frame CornerRadius="15"
+                                                    Padding="5,5,5,5"
+                                                    HasShadow="True"
+                                                    Margin="20,0,20,-5"
+                                                    Grid.ColumnSpan="6"
+                                                    Grid.Column="5">
+                                                <Label Text="{Binding UkrainianWords}"
+                                                        HorizontalTextAlignment="Center"
+                                                        FontSize="Medium"
+                                                        TextColor="Black"
+                                                        Margin="0"
+                                                        Padding="0,-3,0,0">
+                                          
+                                                </Label>
+                                                <Frame.Background>
+                                                    <LinearGradientBrush StartPoint="0,0"
+                                                                            EndPoint="1,1">
+                                                        <GradientStop Color="WhiteSmoke"
+                                                                        Offset="0.2" />
+                                                        <GradientStop Color="White"
+                                                                        Offset="0.9" />
+                                                    </LinearGradientBrush>
+                                                </Frame.Background>
+                                            </Frame>
+
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Grid.ColumnSpan="9"
+                                                NumberOfTapsRequired="2" 
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:VocabularyViewModel}}, Path=ItemTapped}"		
+                                                CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </Grid.GestureRecognizers>
+
+                                        </Grid>
+                        
+                                    </StackLayout>
+                                    </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+                    </ScrollView>
+                </StackLayout>
+            </RefreshView>
+
+        </StackLayout>
+    </ContentPage.Content> 
+</ContentPage>

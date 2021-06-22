@@ -1,7 +1,7 @@
 ﻿using Rg.Plugins.Popup.Pages;
 using Vocabulary.ViewModels;
 
-namespace Vocabulary.View
+namespace Vocabulary.Views
 {
     public partial class PopupAddWordsView : PopupPage
     {

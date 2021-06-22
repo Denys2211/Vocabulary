@@ -12,17 +12,17 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
-    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.12" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="View\" />
+    <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Images\" />
     <Folder Include="Services\" />
+    <Folder Include="Behavior\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="AppShell.xaml.cs">
